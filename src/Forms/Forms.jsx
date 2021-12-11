@@ -1,24 +1,24 @@
-import { Component } from 'react';
-import * as Yup from 'yup';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Component } from "react";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import s from './Forms.module.css';
+import s from "./Forms.module.css";
 
 const validationSchema = Yup.object({
   name: Yup.string()
-    .min(2, 'Too Short!')
+    .min(2, "Too Short!")
     .matches(
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      "Name may contain only letters, apostrophe, dash and spaces. For example: Charles de Batz de Castelmore d'Artagnan",
+      "Name may contain only letters, apostrophe, dash and spaces. For example: Charles de Batz de Castelmore d'Artagnan"
     )
-    .required('required'),
+    .required("required"),
   number: Yup.string()
     .matches(
       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
-      'Phone number is not valid',
+      "Phone number is not valid"
     )
     .min(6)
-    .required('required'),
+    .required("required"),
 });
 
 export default class Forms extends Component {
@@ -26,7 +26,7 @@ export default class Forms extends Component {
     return (
       <div className={s.inputContainer}>
         <Formik
-          initialValues={{ name: '', number: '' }}
+          initialValues={{ name: "", number: "" }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(false);
@@ -40,7 +40,7 @@ export default class Forms extends Component {
                 type="text"
                 name="name"
                 className={s.input}
-                autocomplete="off"
+                autoComplete="off"
               />
               <label className={s.label}>Name:</label>
               <ErrorMessage name="name" component="div" className={s.error} />
@@ -50,7 +50,7 @@ export default class Forms extends Component {
                 type="tel"
                 name="number"
                 className={s.input}
-                autocomplete="off"
+                autoComplete="off"
               />
               <label className={s.label}>Number:</label>
               <ErrorMessage name="number" component="div" className={s.error} />
