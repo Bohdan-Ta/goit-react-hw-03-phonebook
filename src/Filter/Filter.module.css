@@ -1,0 +1,41 @@
+.form {
+  position: relative;
+  top: 20px;
+  margin-bottom: 100px;
+}
+.input {
+  display: block;
+  width: 150%;
+  padding: 0 10px;
+  line-height: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3rem;
+  background: none;
+  border-width: 0;
+  border-bottom: 2px solid red;
+  transition: all 0.2s ease;
+}
+.label {
+  position: absolute;
+  left: 13px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  transform: translateY(-35px);
+  transition: all 0.2s ease;
+}
+.input:focus {
+  outline: 0;
+  border-color: #f77a52;
+}
+.input:focus + label,
+.input:valid + label {
+  transform: translateY(-60px);
+  margin-left: -14px;
+  font-size: 14px;
+  font-weight: 400;
+  outline: 0;
+  border-color: #f77a52;
+  color: #f77a52;
+}

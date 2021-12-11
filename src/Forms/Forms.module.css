@@ -1,0 +1,116 @@
+.inputContainer {
+  position: relative;
+  padding: 15px 0 0;
+  margin-bottom: 50px;
+}
+
+.input {
+  font-family: inherit;
+  border: 0;
+  border-bottom: 2px solid #da2626;
+  outline: 0;
+  font-size: 1.3rem;
+  color: black;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: white;
+  text-transform: uppercase;
+}
+
+.input:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, red, #fff);
+  border-image-slice: 1;
+}
+
+.input:focus ~ .label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #000;
+  font-weight: 700;
+}
+
+.input:required,
+.input:invalid {
+  box-shadow: none;
+}
+
+.error {
+  position: absolute;
+  top: 100%;
+  width: 350px;
+  font-size: 14px;
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, red, rgba(0, 0, 0, 0)) 1 100%;
+  color: rgb(245, 242, 79);
+}
+
+.borderButton {
+  text-decoration: none;
+  display: inline-block;
+  padding: 20px 30px;
+  margin: 10px 20px;
+  align-items: center;
+  position: relative;
+  color: white;
+  border: 1px solid red;
+  background: none;
+  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.borderButton:before,
+.borderButton:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  box-sizing: border-box;
+}
+.borderButton:before {
+  bottom: 0;
+  left: 0;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  transition: 0s ease opacity 0.8s, 0.2s ease width 0.4s, 0.2s ease height 0.6s;
+}
+.borderButton:after {
+  top: 0;
+  right: 0;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  transition: 0s ease opacity 0.4s, 0.2s ease width, 0.2s ease height 0.2s;
+}
+.borderButton:hover:before,
+.borderButton:hover:after {
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}
+.borderButton:hover:before {
+  transition: 0s ease opacity 0s, 0.2s ease height, 0.2s ease width 0.2s;
+}
+.borderButton:hover:after {
+  transition: 0s ease opacity 0.4s, 0.2s ease height 0.4s, 0.2s ease width 0.6s;
+}
+.borderButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

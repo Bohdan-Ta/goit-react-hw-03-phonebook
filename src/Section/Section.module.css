@@ -1,0 +1,13 @@
+.section {
+  margin: 0 auto;
+  width: 350px;
+  padding: 50px;
+}
+
+.title {
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: brown;
+}
