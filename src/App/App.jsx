@@ -1,11 +1,13 @@
 import { Component } from "react";
 import { nanoid } from "nanoid";
+import { ToastContainer, toast } from "react-toastify";
 
 import Sections from "../Section";
 import Forms from "../Forms/Forms";
 import Contacts from "../Contacts";
 import Filter from "../Filter/Filter";
 
+import "react-toastify/dist/ReactToastify.css";
 import s from "./App.module.css";
 
 class App extends Component {
@@ -19,7 +21,7 @@ class App extends Component {
     const searchDublicate = contacts.find((contact) => contact.name === name);
 
     if (searchDublicate) {
-      alert(`${name} is already in contacts`);
+      toast.warning(`${name} is already in contacts`);
     } else {
       this.setState(({ contacts }) => ({
         contacts: [{ id: nanoid(), name, number }, ...contacts],
@@ -76,6 +78,7 @@ class App extends Component {
             onDeleteContact={this.onDeleteContact}
           />
         </Sections>
+        <ToastContainer />
       </div>
     );
   }
