@@ -1,10 +1,10 @@
 import { Component } from "react";
-import Sections from "./Section";
-import Forms from "./Forms/Forms";
-import Contacts from "./Contacts";
-import Filter from "./Filter/Filter";
-
 import { nanoid } from "nanoid";
+
+import Sections from "../Section";
+import Forms from "../Forms/Forms";
+import Contacts from "../Contacts";
+import Filter from "../Filter/Filter";
 
 import s from "./App.module.css";
 
@@ -16,17 +16,13 @@ class App extends Component {
 
   getDataSubmit = ({ name, number }) => {
     const { contacts } = this.state;
-    const newContact = { id: nanoid(), name, number };
-    const searchDublicate = contacts.find(
-      (contact) => contact.name === newContact.name
-    );
+    const searchDublicate = contacts.find((contact) => contact.name === name);
 
     if (searchDublicate) {
-      alert(`${newContact.name} is alredy in contacts`);
-      return;
+      alert(`${name} is already in contacts`);
     } else {
       this.setState(({ contacts }) => ({
-        contacts: [newContact, ...contacts],
+        contacts: [{ id: nanoid(), name, number }, ...contacts],
       }));
     }
   };
@@ -39,7 +35,6 @@ class App extends Component {
     }));
   };
 
-  // prescribed logic of contacts is searched by name without registry
   searchContact = (event) => {
     this.setState({ filter: event.target.value });
   };
@@ -52,7 +47,7 @@ class App extends Component {
       contact.name.toLowerCase().includes(lowerCaseLetters)
     );
   };
-  //=====
+
   componentDidMount() {
     const contacts = localStorage.getItem("contacts");
     const parsContacts = JSON.parse(contacts);
@@ -60,6 +55,7 @@ class App extends Component {
       this.setState({ contacts: parsContacts });
     }
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.contacts !== prevState.state) {
       localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
